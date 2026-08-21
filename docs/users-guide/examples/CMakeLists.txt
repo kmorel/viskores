@@ -51,6 +51,7 @@ set(examples_device
   GuideExampleErrorHandling.cxx
   GuideExampleFields.cxx
   GuideExampleFilterDataSetWithField.cxx
+  GuideExampleFractalWorklets.cxx
   GuideExampleFunctionInterface.cxx
   GuideExampleGenerateMeshCombineLike.cxx
   GuideExampleGenerateMeshConstantShape.cxx
@@ -64,6 +65,7 @@ set(examples_device
   GuideExampleSimpleAlgorithm.cxx
   GuideExampleSimpleHistogram.cxx
   GuideExampleSumOfAngles.cxx
+  GuideExampleTransferringArguments.cxx
   GuideExampleTriangleQuality.cxx
   GuideExampleTryExecute.cxx
   GuideExampleUnknownArrayHandle.cxx
