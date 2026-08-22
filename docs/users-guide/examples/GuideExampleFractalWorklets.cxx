@@ -77,7 +77,7 @@ static void WriteSVG(const std::string& filename,
 }
 
 ////
-//// BEGIN-EXAMPLE TypeCheckImpl.h
+//// BEGIN-EXAMPLE TypeCheckImpl
 ////
 namespace viskores
 {
@@ -106,11 +106,11 @@ struct TypeCheck<TypeCheckTag2DCoordinates, viskores::cont::ArrayHandle<T, Stora
 } // namespace cont
 } // namespace viskores
 ////
-//// END-EXAMPLE TypeCheckImpl.h
+//// END-EXAMPLE TypeCheckImpl
 ////
 
 ////
-//// BEGIN-EXAMPLE TransportImpl.h
+//// BEGIN-EXAMPLE TransportImpl
 ////
 namespace viskores
 {
@@ -157,11 +157,11 @@ struct Transport<viskores::cont::arg::TransportTag2DLineSegmentsIn,
 } // namespace cont
 } // namespace viskores
 ////
-//// END-EXAMPLE TransportImpl.h
+//// END-EXAMPLE TransportImpl
 ////
 
 ////
-//// BEGIN-EXAMPLE FetchImplBasic.h
+//// BEGIN-EXAMPLE FetchImplBasic
 ////
 namespace viskores
 {
@@ -202,11 +202,11 @@ struct Fetch<viskores::exec::arg::FetchTag2DLineSegmentsIn,
 } // namespace exec
 } // namespace viskores
 ////
-//// END-EXAMPLE FetchImplBasic.h
+//// END-EXAMPLE FetchImplBasic
 ////
 
 ////
-//// BEGIN-EXAMPLE AspectImpl.h
+//// BEGIN-EXAMPLE AspectImpl
 ////
 namespace viskores
 {
@@ -277,7 +277,7 @@ struct Fetch<viskores::exec::arg::FetchTag2DLineSegmentsIn,
 } // namespace exec
 } // namespace viskores
 ////
-//// END-EXAMPLE AspectImpl.h
+//// END-EXAMPLE AspectImpl
 ////
 
 struct VecLineSegments : viskores::worklet::WorkletMapField
@@ -371,7 +371,7 @@ void TryVecLineSegments()
 }
 
 ////
-//// BEGIN-EXAMPLE TransportImpl2.h
+//// BEGIN-EXAMPLE TransportImpl2
 ////
 namespace viskores
 {
@@ -416,11 +416,11 @@ struct Transport<viskores::cont::arg::TransportTag2DLineSegmentsOut<NumOutputPer
 } // namespace cont
 } // namespace viskores
 ////
-//// END-EXAMPLE TransportImpl2.h
+//// END-EXAMPLE TransportImpl2
 ////
 
 ////
-//// BEGIN-EXAMPLE ThreadIndicesLineFractal.h
+//// BEGIN-EXAMPLE ThreadIndicesLineFractal
 ////
 namespace viskores
 {
@@ -464,11 +464,11 @@ private:
 } // namespace exec
 } // namespace viskores
 ////
-//// END-EXAMPLE ThreadIndicesLineFractal.h
+//// END-EXAMPLE ThreadIndicesLineFractal
 ////
 
 ////
-//// BEGIN-EXAMPLE LineFractalTransform.h
+//// BEGIN-EXAMPLE LineFractalTransform
 ////
 namespace viskores
 {
@@ -511,11 +511,11 @@ private:
 } // namespace exec
 } // namespace viskores
 ////
-//// END-EXAMPLE LineFractalTransform.h
+//// END-EXAMPLE LineFractalTransform
 ////
 
 ////
-//// BEGIN-EXAMPLE InputDomainFetch.h
+//// BEGIN-EXAMPLE InputDomainFetch
 ////
 namespace viskores
 {
@@ -556,11 +556,11 @@ struct Fetch<FetchTag,
 } // namespace exec
 } // namespace viskores
 ////
-//// END-EXAMPLE InputDomainFetch.h
+//// END-EXAMPLE InputDomainFetch
 ////
 
 ////
-//// BEGIN-EXAMPLE WorkletLineFractal.h
+//// BEGIN-EXAMPLE WorkletLineFractal
 ////
 namespace viskores
 {
@@ -683,11 +683,11 @@ public:
 } // namespace worklet
 } // namespace viskores
 ////
-//// END-EXAMPLE WorkletLineFractal.h
+//// END-EXAMPLE WorkletLineFractal
 ////
 
 ////
-//// BEGIN-EXAMPLE DispatcherLineFractal.h
+//// BEGIN-EXAMPLE DispatcherLineFractal
 ////
 namespace viskores
 {
@@ -797,7 +797,7 @@ public:
 } // namespace worklet
 } // namespace viskores
 ////
-//// END-EXAMPLE DispatcherLineFractal.h
+//// END-EXAMPLE DispatcherLineFractal
 ////
 
 ////
@@ -812,8 +812,8 @@ struct KochSnowflake
     using InputDomain = _1;
 
     template<typename SegmentsOutVecType>
-    void operator()(const viskores::exec::LineFractalTransform& transform,
-                    SegmentsOutVecType& segmentsOutVec) const
+    VISKORES_EXEC void operator()(const viskores::exec::LineFractalTransform& transform,
+                                  SegmentsOutVecType& segmentsOutVec) const
     {
       segmentsOutVec[0][0] = transform(0.00f, 0.00f);
       segmentsOutVec[0][1] = transform(0.33f, 0.00f);
@@ -895,8 +895,8 @@ struct QuadraticType2
     using InputDomain = _1;
 
     template<typename SegmentsOutVecType>
-    void operator()(const viskores::exec::LineFractalTransform& transform,
-                    SegmentsOutVecType& segmentsOutVec) const
+    VISKORES_EXEC void operator()(const viskores::exec::LineFractalTransform& transform,
+                                  SegmentsOutVecType& segmentsOutVec) const
     {
       segmentsOutVec[0][0] = transform(0.00f, 0.00f);
       segmentsOutVec[0][1] = transform(0.25f, 0.00f);
@@ -990,8 +990,8 @@ struct DragonFractal
     using InputDomain = _1;
 
     template<typename SegmentsOutVecType>
-    void operator()(const viskores::exec::LineFractalTransform& transform,
-                    SegmentsOutVecType& segmentsOutVec) const
+    VISKORES_EXEC void operator()(const viskores::exec::LineFractalTransform& transform,
+                                  SegmentsOutVecType& segmentsOutVec) const
     {
       segmentsOutVec[0][0] = transform(0.5f, 0.5f);
       segmentsOutVec[0][1] = transform(0.0f, 0.0f);
@@ -1057,10 +1057,10 @@ struct HilbertCurve
     using InputDomain = _1;
 
     template<typename SegmentsOutVecType>
-    void operator()(const viskores::exec::LineFractalTransform& transform,
-                    viskores::Int8 directionIn,
-                    SegmentsOutVecType& segmentsOutVec,
-                    viskores::Vec4i_8& directionOut) const
+    VISKORES_EXEC void operator()(const viskores::exec::LineFractalTransform& transform,
+                                  viskores::Int8 directionIn,
+                                  SegmentsOutVecType& segmentsOutVec,
+                                  viskores::Vec4i_8& directionOut) const
     {
       segmentsOutVec[0][0] = transform(0.0f, directionIn * 0.0f);
       segmentsOutVec[0][1] = transform(0.0f, directionIn * 0.5f);
@@ -1156,10 +1156,10 @@ struct TreeFractal
     }
 
     template<typename SegmentsOutVecType>
-    void operator()(const viskores::exec::LineFractalTransform& transform,
-                    viskores::IdComponent visitIndex,
-                    SegmentsOutVecType& segmentsOutVec,
-                    viskores::IdComponent& countNextIteration) const
+    VISKORES_EXEC void operator()(const viskores::exec::LineFractalTransform& transform,
+                                  viskores::IdComponent visitIndex,
+                                  SegmentsOutVecType& segmentsOutVec,
+                                  viskores::IdComponent& countNextIteration) const
     {
       switch (visitIndex)
       {
@@ -1234,11 +1234,17 @@ static void TryTree()
 
 static void RunTests()
 {
+  std::cout << "Running TryVecLineSegments" << std::endl;
   TryVecLineSegments();
+  std::cout << "Running TryKoch" << std::endl;
   TryKoch();
+  std::cout << "Running TryQuadraticType2" << std::endl;
   TryQuadraticType2();
+  std::cout << "Running TryDragon" << std::endl;
   TryDragon();
+  std::cout << "Running TryHilbert" << std::endl;
   TryHilbert();
+  std::cout << "Running TryTree" << std::endl;
   TryTree();
 }
 
