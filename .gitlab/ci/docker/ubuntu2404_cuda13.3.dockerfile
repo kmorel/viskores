@@ -7,7 +7,7 @@
 ##============================================================================
 
 
-FROM docker.io/nvidia/cuda:13.0.0-devel-ubuntu24.04
+FROM docker.io/nvidia/cuda:13.3.1-devel-ubuntu24.04
 LABEL maintainer "Vicente Adolfo Bolea Sanchez<vicente.bolea@gmail.com>"
 
 # Base dependencies for building VTK-m projects
