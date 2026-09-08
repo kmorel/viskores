@@ -109,7 +109,10 @@ void TestPCoordsSample(const PointWCoordsType& pointWCoords, CellShapeTag shape)
 
   const viskores::IdComponent numPoints = pointWCoords.GetNumberOfComponents();
 
-  std::uniform_real_distribution<viskores::FloatDefault> randomDist;
+  // Keep every weight positive so that their sum is safe to use as a
+  // normalization factor. The default distribution includes zero, which can
+  // make totalWeight zero for single-point cells.
+  std::uniform_real_distribution<viskores::FloatDefault> randomDist(0.01f, 1.0f);
 
   for (viskores::IdComponent trial = 0; trial < 5; trial++)
   {
