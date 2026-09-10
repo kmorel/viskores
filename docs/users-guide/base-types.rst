@@ -154,7 +154,7 @@ Likewise, |Viskores| provides :type:`viskores::IdComponent2`, :type:`viskores::I
 
 .. doxygentypedef:: viskores::IdComponent4
 
-|Viskores| also provides types for \textidentifier{Vec}s of integers of all varieties described in Section \ref{sec:IntegerTypes}.
+|Viskores| also provides types for a ``Vec`` of integers of all varieties described in :secref:`base-types:Integer Types`.
 :type:`viskores::Vec2i`, :type:`viskores::Vec3i`, and :type:`viskores::Vec4i` are vectors of signed integers whereas :type:`viskores::Vec2ui`, :type:`viskores::Vec3ui`, and :type:`viskores::Vec4ui` are vectors of unsigned integers.
 All of these sport components of a width equal to :type:`viskores::Id`.
 
